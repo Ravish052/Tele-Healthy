@@ -49,4 +49,7 @@ user.password = undefined;
 user.passwordConfirm = undefined;
 user.otp = undefined;
 
+const userRouter = require('./routes/userRoutes');
+app.use('/api/v1/users', userRouter);
+
 module.exports = app;
