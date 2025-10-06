@@ -1,4 +1,4 @@
-const express = require ('express');
+const express = require('express');
 
 const cors = require('cors');
 const cookeieParser = require('cookie-parser');
@@ -10,25 +10,25 @@ const app = express();
 
 app.use(
     cors({
-        origin : ["http://localhost:5173",],
+        origin: ["http://localhost:5173",],
         credentials: true,
     })
 )
 
-app.use(express.json({ limit : '10kb'}))
+app.use(express.json({ limit: '10kb' }))
 app.use(cookeieParser());
 
 app.all("/{*any}", (req, res, next) => {
-    next (new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+    next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 })
 
 app.use(globalErrorHandler);
 
 const signToken = (userId) => {
     return jwt.sign({
-        id : userId
+        id: userId
     }, process.env.JWT_SECRET, {
-        expiresIn : process.env.JWT_EXPIRES_IN || '90d'
+        expiresIn: process.env.JWT_EXPIRES_IN || '90d'
     })
 }
 
@@ -44,5 +44,9 @@ const createToken = (user, statusCode, res, message) => {
 }
 
 res.cookie("token", token, cookieOptions);
+
+user.password = undefined;
+user.passwordConfirm = undefined;
+user.otp = undefined;
 
 module.exports = app;
