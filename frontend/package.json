@@ -10,8 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@stream-io/stream-chat-css": "^5.16.0",
+    "@stream-io/video-react-sdk": "^1.26.0",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "stream-chat": "^9.25.0",
+    "stream-chat-react": "^13.11.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
